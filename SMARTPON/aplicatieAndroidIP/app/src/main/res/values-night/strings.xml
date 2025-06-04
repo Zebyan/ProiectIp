@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediPort</string>
+    <string name="devices">Bluetooth Devices</string>
+
+    <string name="bluetooth_permission_title">Bluetooth permission</string>
+    <string name="bluetooth_permission_grant">Bluetooth permission is required by this App. Please grant in next dialog.</string>
+    <string name="bluetooth_permission_denied">Bluetooth permission was permanently denied. You have to enable permission \"%s\" in App settings.</string>
+    <string name="title_activity_manual_control">ManualControlActivity</string>
+
+    <string name="Connect">Conectare</string>
+    <string name="Password">Password:</string>
+    <string name="ID">ID:</string>
+    <string name="LoginText">Bun venit in aplicatia de control</string>
+    <string name="HomeText">Bine ai venit, </string>
+
+    <string name="Pacient">Pacient Details</string>
+    <string name="PacientName">%1$s</string>
+    <string name="PacientID">CNP: %1$s</string>
+    <string name="PacientPhoneNo">Phone no.: %1$s</string>
+    <string name="PacientEmail">Email: %1$s</string>
+    <string name="PacientCounty">County: %1$s</string>
+    <string name="PacientCity">City: %1$s</string>
+    <string name="PacientAddress">Street: %1$s</string>
+    <string name="PacientJobName">Job Name: %1$s</string>
+    <string name="PacientJobWorkplace">Job Workplace: %1$s</string>
+    <string name="PacientGender">%1$s</string>
+    <string name="PacientBloodGroup">Blood Group: %1$s</string>
+    <string name="PacientRH">RH: %1$s</string>
+    <string name="PacientBed">Bed ID: %1$s</string>
+
+    <string name="Address">Address</string>
+    <string name="MedInfo">Medical Information</string>
+    <string name="ProInfo">Professional Information</string>
+
+    <string name="PacientOption1">View Details</string>
+    <string name="PacientOption2">Order Robot</string>
+
+    <string name="CancelButton">Cancel Order</string>
+    <string name="ConfirmButton">Confirm Order</string>
+
+    <string name="Prescription">Prescription List</string>
+
+    <string name="OrderTitle">Order for: %1$s</string>
+    <string name="OrderPlaced">Order Placed at: %1$s</string>
+    <string name="OrderProcessed">Order Processed at: %1$s</string>
+    <string name="OrderTransit">Order In Transit at: %1$s</string>
+    <string name="OrderFinished">Order Arrived at: %1$s</string>
+</resources>

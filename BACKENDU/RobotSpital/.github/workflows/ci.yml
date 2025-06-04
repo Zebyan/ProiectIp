@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      ALGORITHM: ${{ secrets.ALGORITHM }}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+      DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set Alembic DB URL
+        run: |
+          echo "ALEMBIC_DATABASE_URI=${DATABASE_URL}" >> $GITHUB_ENV
+
+      - name: Run migrations
+        run: alembic upgrade head
+
+      - name: Log in to Docker Hub
+        run: |
+          echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
+
+      - name: Build & Push Docker image
+        run: |
+          IMAGE="${{ secrets.DOCKER_USERNAME }}/robotspital"
+          TAG="${{ github.sha }}"
+          # Build with both tags
+          docker build -t $IMAGE:$TAG -t $IMAGE:latest .
+          # Push both
+          echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
+          docker push $IMAGE:$TAG
+          docker push $IMAGE:latest
+

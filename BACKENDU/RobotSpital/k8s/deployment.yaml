@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: robotspital
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: robotspital
+  template:
+    metadata:
+      labels:
+        app: robotspital
+    spec:
+      containers:
+        - name: backend
+          image: zebyan/robotspital:latest
+          imagePullPolicy: Always
+          env:
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: EMAIL_PASSWORD
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: DATABASE_URL
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: SECRET_KEY
+            - name: algorithm
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: algorithm
+            - name: access_token_expire_minutes
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: access_token_expire_minutes
+            - name: ALEMBIC_DATABASE_URI
+              valueFrom:
+                secretKeyRef:
+                  name: robotspital-secrets
+                  key: DATABASE_URL
+          ports:
+            - containerPort: 8000

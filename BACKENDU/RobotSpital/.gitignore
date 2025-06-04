@@ -1,0 +1,39 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+
+# Environment file (contains secrets)
+.env
+
+# Alembic cache (ignore version cache, but keep migration scripts if needed)
+alembic/versions/__pycache__/
+
+# Docker
+*.pid
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+
+# Byte-compiled and cache directories
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy & Pydantic
+.mypy_cache/
+__pydantic_cache__/

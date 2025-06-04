@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.aplicatieandroidip.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_LoginFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.example.aplicatieandroidip.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_HomeFragment_to_BluetoothFragment"
+            app:destination="@id/BluetoothFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_PacientDetailsFragment"
+            app:destination="@id/PacientDetailsFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_AutomaticOrderFragment"
+            app:destination="@+id/AutomaticOrderFragment" />
+
+        <!--Logout-->
+        <action
+            android:id="@+id/action_HomeFragment_to_LoginFragment"
+            app:destination="@+id/LoginFragment" />
+
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/HomeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BluetoothFragment"
+        android:name="com.example.aplicatieandroidip.BluetoothFragment"
+        android:label="Manual Control" />
+
+    <fragment
+        android:id="@+id/PacientDetailsFragment"
+        android:name="com.example.aplicatieandroidip.PacientDetalisFragment"
+        android:label="Patient Details" />
+
+    <fragment
+        android:id="@+id/AutomaticOrderFragment"
+        android:name="com.example.aplicatieandroidip.AutomaticOrderFragment"
+        android:label="Automatic Order">
+        <action
+            android:id="@+id/action_AutomaticOrderFragment_to_OrderStatusFragment"
+            app:destination="@id/OrderStatusFragment" />
+        <action
+            android:id="@+id/action_AutomaticOrderFragment_to_BluetoothFragment"
+            app:destination="@id/BluetoothFragment" />
+
+        <!--Back-->
+        <action
+            android:id="@+id/action_AutomaticOrderFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/OrderStatusFragment"
+        android:name="com.example.aplicatieandroidip.OrderStatusFragment"
+        android:label="Order Status">
+    <action
+        android:id="@+id/action_OrderStatusFragment_to_HomeFragment"
+        app:destination="@id/HomeFragment" />
+    </fragment>
+
+</navigation>
